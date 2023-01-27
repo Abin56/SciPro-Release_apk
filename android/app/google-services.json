@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "974571096401",
+    "firebase_url": "https://leptonscipro-31792-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "leptonscipro-31792",
+    "storage_bucket": "leptonscipro-31792.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974571096401:android:3904d6ae5cdc3a7a9a6b70",
+        "android_client_info": {
+          "package_name": "com.LeptonCommunication.scipro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974571096401-1k7mf09vljmdbaa7amnqn8tt501cafrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogPa96bXKrKGAaJpaHrqMpeNdq5nn7aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974571096401-1k7mf09vljmdbaa7amnqn8tt501cafrp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "974571096401-f98o5ukgv06apg69d6qol0j8toeusk9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sciproApplication"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974571096401:android:16daf5023ce557fc9a6b70",
+        "android_client_info": {
+          "package_name": "com.lepton.scipro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974571096401-1k7mf09vljmdbaa7amnqn8tt501cafrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogPa96bXKrKGAaJpaHrqMpeNdq5nn7aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974571096401-1k7mf09vljmdbaa7amnqn8tt501cafrp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "974571096401-f98o5ukgv06apg69d6qol0j8toeusk9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sciproApplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

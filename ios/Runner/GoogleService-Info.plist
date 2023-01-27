@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>974571096401-qelpm6gf8tfmul166fg8359fa3m33t9r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.974571096401-qelpm6gf8tfmul166fg8359fa3m33t9r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>974571096401-i0te86gvf6e455a2skg1tqsiq94s07co.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDSNt2JwpQvleEeaOw7NYvdgKoP6TwLCsI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>974571096401</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sciproApp</string>
+	<key>PROJECT_ID</key>
+	<string>leptonscipro-31792</string>
+	<key>STORAGE_BUCKET</key>
+	<string>leptonscipro-31792.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:974571096401:ios:a14e880f7c214da29a6b70</string>
+	<key>DATABASE_URL</key>
+	<string>https://leptonscipro-31792-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
