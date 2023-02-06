@@ -19,7 +19,8 @@ String LiveCoursePaymentModelToJson(LiveCoursePaymentModel data) =>
 
 class LiveCoursePaymentModel {
   LiveCoursePaymentModel({
-    required this.useremail,
+        required this.useremail,
+    required this.joinDate,
     required this.userName,
     required this.courseid,
     required this.uid,
@@ -34,6 +35,7 @@ class LiveCoursePaymentModel {
   });
 
   String useremail;
+    String joinDate;
   String userName;
   String courseid;
   String uid;
@@ -49,6 +51,7 @@ class LiveCoursePaymentModel {
       LiveCoursePaymentModel(
         useremail: json["useremail"] ?? '',
         userName: json["userName"] ?? '',
+                joinDate: json["joinDate"] ?? '',
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
@@ -63,6 +66,7 @@ class LiveCoursePaymentModel {
 
   Map<String, dynamic> toJson() => {
         "useremail": useremail,
+           "joinDate": joinDate,
         "userName": userName,
         "courseid": courseid,
         "uid": uid,

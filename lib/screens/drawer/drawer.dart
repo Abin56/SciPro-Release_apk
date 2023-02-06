@@ -161,8 +161,51 @@ Widget MyDrawerList(context) {
             currentPage == DrawerSections.dashboard ? true : false, () {
           signOut(context);
         }),
+
         SizedBox(
           height: 200,
+          width: 200,
+          child: Stack(children: [
+            Positioned(
+              left: 5,
+              top: 10,
+              child: Row(
+                children: const [
+                  Text(
+                    "Developed by",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+                top: 40,
+                left: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: NetworkImage(
+                          'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Lepton Plus Communications",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(156, 255, 255, 255),
+                          fontSize: 11.5),
+                    ),
+                  ],
+                ))
+          ]),
+        ),
+        SizedBox(
+          height: 100,
           width: 100,
           child: Stack(children: [
             Positioned(
@@ -188,7 +231,7 @@ Widget MyDrawerList(context) {
                 child: Column(
                   children: const [
                     Text(
-                      "1.0.2",
+                      "1.0.5",
                       style: TextStyle(
                           color: Color.fromARGB(156, 255, 255, 255),
                           fontSize: 11.5),
@@ -196,7 +239,7 @@ Widget MyDrawerList(context) {
                   ],
                 ))
           ]),
-        )
+        ),
       ],
     ),
   );

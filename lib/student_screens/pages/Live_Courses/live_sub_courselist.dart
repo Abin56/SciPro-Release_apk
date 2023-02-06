@@ -8,12 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:scipro_app/student_screens/pages/Live_Courses/liveStudy_materials.dart';
 
 import '../../../model/live_class_model.dart';
 import '../../../screens/hybrid_courses.dart';
 import '../../../widgets/button_Container.dart';
 import '../../Student_waiting_room.dart';
 import '../Record_Courses/recorded_courses.dart';
+import '../Study_Materials/studymaterials_screen.dart';
 import '../faculties.dart';
 import '../live_Mock_test.dart';
 import '../study_materials_screen.dart';
@@ -94,23 +96,39 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(20),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text(
-                                        'Exipry date : ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                            fontSize: 12),
-                                      ),
-                                      Text(
-                                        formatted,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                            fontSize: 11),
-                                      ),
+                                      IconButton(
+                                          onPressed: () async {
+                                            await Get.to(
+                                                StudentStudyMaterialsLIVEScreen(
+                                              id: data.id,
+                                            ));
+                                            log(data.id);
+                                          },
+                                          icon: const Icon(
+                                            Icons.collections_bookmark_rounded,
+                                            color: Colors.amber,
+                                          )),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Exipry date : ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                fontSize: 12),
+                                          ),
+                                          Text(
+                                            formatted,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                                fontSize: 11),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ),
                                 ),

@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, must_be_immutable, unused_catch_clause, empty_catches
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,16 +92,17 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     await getInvoice();
 
     final userpaymentData = UserPaymentModel(
+        joinDate: DateTime.now().toString(),
         duration: widget.duration.toString(),
         exDate: widget.newDate.toString(),
         inVoiceNumber: widget.inVoiceNumber,
         id: widget.id,
         randomNumber: widget.inVoiceNumber.toString(),
         totalprice: widget.totalPrice,
-        useremail: widget.userEmail.toString(),
-        userName: widget.userName.toString(),
+        useremail: "dhanyaalex008@gmail.com",
+        userName: "Dhanya Alex",
         courseid: widget.courseID,
-        uid: widget.user.toString(),
+        uid: "bwjg8MggmiTVYqWUkd8tIc2CnfB3",
         courseName: widget.courseName);
     await UserAddressAddToFireBase().addUserPaymentModelController(
       userpaymentData,
@@ -116,10 +118,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
     /// Invoice for Admin>>>>>>>>>>>>>>>>
     final storeRecInvoicetoAdmin = RecGetInvoiceModel(
-        useremail: widget.userEmail.toString(),
-        userName: widget.userName.toString(),
+        useremail: "dhanyaalex008@gmail.com",
+        userName: "Dhanya Alex",
         courseid: widget.courseID,
-        uid: widget.userEmail.toString(),
+        uid: "bwjg8MggmiTVYqWUkd8tIc2CnfB3",
         courseName: widget.courseName,
         inVoiceNumber: widget.inVoiceNumber,
         date: widget.newDate.toString(),
@@ -301,22 +303,32 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
                     double ttotalPrice = double.parse(widget.totalPrice);
-                    // double ttotalPrice = 1;
-                    double paymentPrice = ttotalPrice * 100;
+                    double paymentPrice = 1 * 100;
                     // Get.off(PaymentScreen());
                     //
+                    final _functions = FirebaseFunctions.instance;
 
-                    getOrderId(String txnid, String amount) async {
-                      print("Call Start Here");
-                      // servicewrapp
-                    }
+                    final result =
+                        await _functions.httpsCallable('createOrder').call(
+                      <String, dynamic>{
+                        'amount': paymentPrice,
+                        'currency': "INR",
+                        'receipt':
+                            FirebaseAuth.instance.currentUser!.displayName,
+                        'description': FirebaseAuth.instance.currentUser!.email,
+                      },
+                    );
+                    final responseData = result.data as Map<String, dynamic>;
+                    // final orderDetails = ProcessingOrder.fromMap(responseData);
+                    print('ORDER ID: ${responseData["id"]}');
 
                     var options = {
                       'key': 'rzp_live_WkqZiZtSI6LGQ9',
-                      // 'key':'rzp_test_4H63BqbBLQlmNQ',
+                      // 'key': 'rzp_test_4H63BqbBLQlmNQ',
                       //amount will be multiple of 100
+                      'order_id': responseData["id"],
                       'amount': paymentPrice.toString(), //so its pay 500
-                      'name': 'VECTOR WIND',
+                      'name': 'VECTORWIND-TEC',
                       'description': 'SciPro',
                       'timeout': 300, // in seconds
                       'prefill': {

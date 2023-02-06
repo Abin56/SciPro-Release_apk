@@ -30,6 +30,7 @@ class UserPaymentModel {
     required this.inVoiceNumber,
     required this.exDate,
     required this.duration,
+    required this.joinDate,
   });
   String userName;
 
@@ -42,6 +43,7 @@ class UserPaymentModel {
   String totalprice;
   String randomNumber;
   String exDate;
+  String joinDate;
   String duration;
 
   factory UserPaymentModel.fromJson(Map<String, dynamic> json) =>
@@ -56,6 +58,7 @@ class UserPaymentModel {
           totalprice: json["totalprice"],
           randomNumber: json["randomNumber"] ?? '',
           exDate: json["exDate"] ?? '',
+          joinDate: json["joinDate"] ?? '',
           duration: json["duration"] ?? '');
 
   Map<String, dynamic> toJson() => {
@@ -69,6 +72,7 @@ class UserPaymentModel {
         "totalprice": totalprice,
         "randomNumber": randomNumber,
         "exDate": exDate,
+        "joinDate": joinDate,
         "duration": duration,
       };
 }
@@ -81,7 +85,7 @@ class UserAddressAddToFireBase {
     //
     var x = await FirebaseFirestore.instance
         .collection("UserRECPaymentModel")
-        .doc(currentUser)
+        .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
         .get();
 
     var y = x.data();
@@ -92,7 +96,7 @@ class UserAddressAddToFireBase {
         final firebase = FirebaseFirestore.instance;
         final doc = firebase
             .collection("UserRECPaymentModel")
-            .doc(currentUser)
+            .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
             .set(list.toMap())
             .then((value) => Get.offAll(PaymentSucessfullScreen(
                   inVoiceNumber: productModel.inVoiceNumber,
@@ -113,7 +117,7 @@ class UserAddressAddToFireBase {
         final firebase = FirebaseFirestore.instance;
         final doc = firebase
             .collection("UserRECPaymentModel")
-            .doc(currentUser)
+            .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
             .set(list.toMap())
             .then((value) => Get.offAll(PaymentSucessfullScreen(
                   inVoiceNumber: productModel.inVoiceNumber,

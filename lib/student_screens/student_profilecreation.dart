@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scipro_app/model/user_creation_model/user_model.dart';
 
 import '../controllers/getx.dart';
 import '../main.dart';
@@ -34,7 +35,6 @@ class StudentProfleCreation extends StatelessWidget {
     return Form(
       key: _formKey,
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(192, 0, 0, 0),
         appBar: AppBar(
           title: Text(
             "Create Profile",
@@ -42,237 +42,241 @@ class StudentProfleCreation extends StatelessWidget {
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.black,
         ),
         body: SafeArea(
-          child: ListView(
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              GetBuilder<SciProController>(
-                init: homeController,
-                initState: (_) {},
-                builder: (_) {
-                  return Container(
-                      height: 160,
-                      width: 300,
-                      decoration: const BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
-                      child: homeController.pickedImage == null
-                          ? GestureDetector(
-                              onTap: () {
-                                getBottomsheet(context);
-                              },
-                              child: Stack(
-                                children: const [
-                                  Positioned(
-                                      top: 110,
-                                      left: 230,
-                                      child: CircleAvatar(
-                                        radius: 23,
-                                        backgroundColor: Colors.amber,
-                                        child: Icon(
-                                          Icons.camera_alt_outlined,
-                                          color: Colors.black,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            )
-                          : CircleAvatar(
-                              backgroundImage:
-                                  FileImage(File(homeController.pickedImage!)),
-                            ));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the name';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: nameController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter your Name',
-                  hintText: ' Name',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                GetBuilder<SciProController>(
+                  init: homeController,
+                  initState: (_) {},
+                  builder: (_) {
+                    return Container(
+                        height: 160,
+                        width: 300,
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 248, 182, 178),
+                            shape: BoxShape.circle),
+                        child: homeController.pickedImage == null
+                            ? GestureDetector(
+                                onTap: () {
+                                  getBottomsheet(context);
+                                },
+                                child: Stack(
+                                  children: const [
+                                    Positioned(
+                                        top: 110,
+                                        left: 230,
+                                        child: CircleAvatar(
+                                          radius: 23,
+                                          backgroundColor: Colors.amber,
+                                          child: Icon(
+                                            Icons.camera_alt_outlined,
+                                            color: Colors.black,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              )
+                            : CircleAvatar(
+                                backgroundImage: FileImage(
+                                    File(homeController.pickedImage!)),
+                              ));
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please fill the name';
+                    }
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: nameController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    helperText: 'Enter your Name',
+                    hintText: ' Name',
+                    isDense: true,
+                    filled: true,
+                    fillColor: Color.fromARGB(0, 16, 16, 16),
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the address';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: addressController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter your Address',
-                  hintText: ' Address',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please fill the address';
+                    }
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: addressController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    helperText: 'Enter your Address',
+                    hintText: ' Address',
+                    isDense: true,
+                    filled: true,
+                    fillColor: Color.fromARGB(0, 16, 16, 16),
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the course';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: courseController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter yourCourse',
-                  hintText: 'Course',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please fill the email';
+                    }
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: emailController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    helperText: 'Enter your email',
+                    hintText: ' email',
+                    isDense: true,
+                    filled: true,
+                    fillColor: Color.fromARGB(0, 16, 16, 16),
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the email';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: emailController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter your email',
-                  hintText: ' email',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please fill the Phonenumber';
+                    }
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  keyboardType: TextInputType.number,
+                  controller: phoneNumberController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    helperText: 'Enter your PhoneNumber',
+                    hintText: ' PhoneNumber',
+                    isDense: true,
+                    filled: true,
+                    fillColor: Color.fromARGB(0, 16, 16, 16),
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the Phonenumber';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                keyboardType: TextInputType.number,
-                controller: phoneNumberController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter your PhoneNumber',
-                  hintText: ' PhoneNumber',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please fill the pincode ';
+                    }
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  keyboardType: TextInputType.number,
+                  controller: pincodeController,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    helperText: 'Enter your PinCode',
+                    hintText: ' PinCode',
+                    isDense: true,
+                    filled: true,
+                    fillColor: Color.fromARGB(0, 16, 16, 16),
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please fill the pincode ';
-                  }
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                keyboardType: TextInputType.number,
-                controller: pincodeController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  helperText: 'Enter your PinCode',
-                  hintText: ' PinCode',
-                  isDense: true,
-                  filled: true,
-                  fillColor: Color.fromARGB(0, 16, 16, 16),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          final userDetails = UserRegModel(
+                              useremail: emailController.text.trim(),
+                              userName: nameController.text.trim(),
+                              address: addressController.text.trim(),
+                              email: emailController.text.trim(),
+                              phoneNumber: phoneNumberController.text.trim(),
+                              pincode: pincodeController.text.trim(),
+                              joinDate: DateTime.now().toString(),
+                              id: '');
+                          UserRegModelAddToFireBase()
+                              .userRegModelController(userDetails);
+                        }
+                      },
+                      child: ButtonContainerWidget(
+                        curving: 30,
+                        colorindex: 0,
+                        height: 50,
+                        width: 200,
+                        child: Center(
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    final addtoHive = DBStudentList(
-                        pincode: phoneNumberController.text.trim(),
-                        name: nameController.text.trim(),
-                        address: addressController.text.trim(),
-                        subject: courseController.text.trim(),
-                        mobilenumber: phoneNumberController.text.trim(),
-                        image: homeController.pickedImage!,
-                        email: emailController.text.trim());
-                    studentdataDB.add(addtoHive);
-                    Get.offAll(StudentandFacultyLoginScreen());
-                  }
-                },
-                child: ButtonContainerWidget(
-                  curving: 30,
-                  colorindex: 4,
-                  height: 50,
-                  width: 200,
-                  child: Center(
-                    child: Text('Save'),
-                  ),
-                ),
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

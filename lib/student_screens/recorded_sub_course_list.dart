@@ -86,8 +86,12 @@ class RecordedCourseListScreen extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconButton(
-                                        onPressed: () {
-                                          Get.to(StudentStudyMaterialsScreen());
+                                        onPressed: () async {
+                                          await Get.to(
+                                              StudentStudyMaterialsScreen(
+                                            id: data.id,
+                                          ));
+                                          log(data.id);
                                         },
                                         icon: const Icon(
                                           Icons.collections_bookmark_rounded,

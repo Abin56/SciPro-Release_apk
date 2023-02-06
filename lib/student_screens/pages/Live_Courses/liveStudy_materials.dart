@@ -12,9 +12,9 @@ import 'package:scipro_app/widgets/button_Container.dart';
 
 import '../../../model/studyMaterials.dart/s_m_cat_model.dart';
 
-class StudentStudyMaterialsScreen extends StatelessWidget {
+class StudentStudyMaterialsLIVEScreen extends StatelessWidget {
   var id;
-  StudentStudyMaterialsScreen({required this.id, super.key});
+  StudentStudyMaterialsLIVEScreen({required this.id, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,9 @@ class StudentStudyMaterialsScreen extends StatelessWidget {
       body: SafeArea(
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection("RecordedCourselist")
+                  .collection("LiveCourselist")
                   .doc(id)
-                  .collection("StudyMaterials")
+                  .collection("StudyMaterialsforlive")
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {

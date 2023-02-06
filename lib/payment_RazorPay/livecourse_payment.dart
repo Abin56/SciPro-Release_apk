@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, must_be_immutable, unused_catch_clause, empty_catches
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -97,6 +98,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
     await getDate();
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
+      joinDate: DateTime.now().toString(),
         date: widget.newDate.toString(),
         inVoiceNumber: widget.inVoiceNumber,
         time: '',
@@ -296,13 +298,30 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
                     double ttotalPrice = double.parse(widget.totalPrice);
-                    double paymentPrice = ttotalPrice * 100;
+                    double paymentPrice = 1 * 100;
                     // Get.off(PaymentScreen());
                     //
+                    final _functions = FirebaseFunctions.instance;
+
+                    final result =
+                        await _functions.httpsCallable('createOrder').call(
+                      <String, dynamic>{
+                        'amount': paymentPrice,
+                        'currency': "INR",
+                        'receipt':
+                            FirebaseAuth.instance.currentUser!.displayName,
+                        'description': FirebaseAuth.instance.currentUser!.email,
+                      },
+                    );
+                    final responseData = result.data as Map<String, dynamic>;
+                    // final orderDetails = ProcessingOrder.fromMap(responseData);
+                    print('ORDER ID: ${responseData["id"]}');
+
                     var options = {
                       'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       // 'key': 'rzp_test_4H63BqbBLQlmNQ',
                       //amount will be multiple of 100
+                      'order_id': responseData["id"],
                       'amount': paymentPrice.toString(), //so its pay 500
                       'name': 'VECTORWIND-TEC',
                       'description': 'SciPro',
