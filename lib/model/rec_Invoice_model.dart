@@ -22,6 +22,7 @@ class RecGetInvoiceModel {
     required this.courseName,
     required this.inVoiceNumber,
     required this.date,
+    required this.joinDate,
     required this.time,
     required this.totalprice,
     required this.id,
@@ -35,6 +36,7 @@ class RecGetInvoiceModel {
   String courseName;
   dynamic inVoiceNumber;
   String date;
+  String joinDate;
   String time;
   dynamic totalprice;
 
@@ -43,6 +45,7 @@ class RecGetInvoiceModel {
         useremail: json["useremail"] ?? '',
         inVoiceNumber: json["inVoiceNumber"] ?? '',
         date: json["date"] ?? '',
+        joinDate: json["joinDate"] ?? '',
         time: json["time"] ?? '',
         userName: json["userName"] ?? '',
         courseid: json["courseid"] ?? '',
@@ -57,6 +60,7 @@ class RecGetInvoiceModel {
         "inVoiceNumber": inVoiceNumber,
         "courseName": courseName,
         "date": date,
+        "joinDate": joinDate,
         "userName": userName,
         "courseid": courseid,
         "uid": uid,

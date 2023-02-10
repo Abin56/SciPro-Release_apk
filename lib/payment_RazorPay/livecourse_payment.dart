@@ -98,7 +98,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
     await getDate();
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
-      joinDate: DateTime.now().toString(),
+        joinDate: DateTime.now().toString(),
         date: widget.newDate.toString(),
         inVoiceNumber: widget.inVoiceNumber,
         time: '',
@@ -115,6 +115,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
         .livePaymentModelController(userpaymentData);
 
     final storeRecInvoicetoAdmin = LiveGetInvoiceModel(
+        joinDate: DateTime.now().toString(),
         useremail: widget.userEmail.toString(),
         userName: widget.userName.toString(),
         courseid: widget.courseID,
@@ -298,7 +299,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
                     double ttotalPrice = double.parse(widget.totalPrice);
-                    double paymentPrice = 1 * 100;
+                    double paymentPrice = ttotalPrice * 100;
                     // Get.off(PaymentScreen());
                     //
                     final _functions = FirebaseFunctions.instance;

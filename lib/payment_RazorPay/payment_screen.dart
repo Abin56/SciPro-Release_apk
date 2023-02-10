@@ -99,10 +99,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         id: widget.id,
         randomNumber: widget.inVoiceNumber.toString(),
         totalprice: widget.totalPrice,
-        useremail: "dhanyaalex008@gmail.com",
-        userName: "Dhanya Alex",
+        useremail: widget.userEmail.toString(),
+        userName: widget.userName.toString(),
         courseid: widget.courseID,
-        uid: "bwjg8MggmiTVYqWUkd8tIc2CnfB3",
+        uid: FirebaseAuth.instance.currentUser!.uid.toString(),
         courseName: widget.courseName);
     await UserAddressAddToFireBase().addUserPaymentModelController(
       userpaymentData,
@@ -118,10 +118,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
     /// Invoice for Admin>>>>>>>>>>>>>>>>
     final storeRecInvoicetoAdmin = RecGetInvoiceModel(
-        useremail: "dhanyaalex008@gmail.com",
-        userName: "Dhanya Alex",
+        joinDate: DateTime.now().toString(),
+        useremail: FirebaseAuth.instance.currentUser!.email.toString(),
+        userName: FirebaseAuth.instance.currentUser!.displayName.toString(),
         courseid: widget.courseID,
-        uid: "bwjg8MggmiTVYqWUkd8tIc2CnfB3",
+        uid: FirebaseAuth.instance.currentUser!.uid.toString(),
         courseName: widget.courseName,
         inVoiceNumber: widget.inVoiceNumber,
         date: widget.newDate.toString(),
@@ -303,8 +304,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
                     double ttotalPrice = double.parse(widget.totalPrice);
-                    double paymentPrice = 1 * 100;
-                    // Get.off(PaymentScreen());
+                    double paymentPrice = ttotalPrice * 100;
                     //
                     final _functions = FirebaseFunctions.instance;
 

@@ -25,6 +25,7 @@ class LiveGetInvoiceModel {
     required this.time,
     required this.totalprice,
     required this.id,
+    required this.joinDate,
   });
 
   String userName;
@@ -37,6 +38,7 @@ class LiveGetInvoiceModel {
   String date;
   String time;
   dynamic totalprice;
+  String joinDate;
 
   factory LiveGetInvoiceModel.fromJson(Map<String, dynamic> json) =>
       LiveGetInvoiceModel(
@@ -50,6 +52,7 @@ class LiveGetInvoiceModel {
         courseName: json["courseName"] ?? '',
         totalprice: json["totalprice"] ?? '',
         id: json["id"] ?? '',
+        joinDate: json["joinDate"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -63,12 +66,12 @@ class LiveGetInvoiceModel {
         "time": time,
         "totalprice": totalprice,
         "id": id,
+        "joinDate": joinDate,
       };
 }
 
 class LiveGetInvoiceAddToFireBase {
-  Future liveGetInvoiceController(
-      LiveGetInvoiceModel productModel) async {
+  Future liveGetInvoiceController(LiveGetInvoiceModel productModel) async {
     try {
       final firebase = FirebaseFirestore.instance;
       final doc = firebase.collection("Live_Invoice_Collection").doc();

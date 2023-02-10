@@ -85,7 +85,7 @@ class UserAddressAddToFireBase {
     //
     var x = await FirebaseFirestore.instance
         .collection("UserRECPaymentModel")
-        .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
+        .doc(currentUser)
         .get();
 
     var y = x.data();
@@ -96,7 +96,7 @@ class UserAddressAddToFireBase {
         final firebase = FirebaseFirestore.instance;
         final doc = firebase
             .collection("UserRECPaymentModel")
-            .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
+            .doc(currentUser)
             .set(list.toMap())
             .then((value) => Get.offAll(PaymentSucessfullScreen(
                   inVoiceNumber: productModel.inVoiceNumber,
@@ -117,7 +117,7 @@ class UserAddressAddToFireBase {
         final firebase = FirebaseFirestore.instance;
         final doc = firebase
             .collection("UserRECPaymentModel")
-            .doc("bwjg8MggmiTVYqWUkd8tIc2CnfB3")
+            .doc(currentUser)
             .set(list.toMap())
             .then((value) => Get.offAll(PaymentSucessfullScreen(
                   inVoiceNumber: productModel.inVoiceNumber,
